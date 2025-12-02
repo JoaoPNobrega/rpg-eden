@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=VT323&display=swap');
+
+body {
+  background-color: #0f0518;
+  color: white;
+  margin: 0;
+  font-family: 'VT323', monospace;
+}
+
+/* Barras de rolagem personalizadas */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0510; }
+::-webkit-scrollbar-thumb { background: #4a2e6b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
