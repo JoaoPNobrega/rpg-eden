@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, Hammer, Pickaxe, Sword, Shield, Scroll, Leaf, Coins, Utensils, Skull, Crosshair, Users, Sparkles, Ghost, Feather, Save, Trash2, AlertTriangle, User, ExternalLink, Gamepad2, Copy, Info, Wand2 } from 'lucide-react';
+// ADICIONEI "Github" AQUI NA IMPORTAÇÃO
+import { ArrowLeft, Hammer, Pickaxe, Sword, Shield, Scroll, Leaf, Coins, Utensils, Skull, Crosshair, Users, Sparkles, Ghost, Feather, Save, Trash2, AlertTriangle, User, ExternalLink, Gamepad2, Copy, Info, Wand2, Github } from 'lucide-react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
@@ -252,6 +253,16 @@ const HomePage = ({ setPage, onOpenServer }) => (
       </button>
 
     </div>
+
+    {/* --- RODAPÉ NOVO --- */}
+    <footer className="absolute bottom-4 left-0 right-0 z-20 flex justify-center items-center gap-2 font-pixel text-gray-500/70 hover:text-gray-300 transition-colors pointer-events-auto">
+        <span>Criado por</span>
+        <a href="https://github.com/JoaoPNobrega" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-fuchsia-500 hover:text-fuchsia-300 transition-colors">
+            @JoaoPNobrega <Github className="w-4 h-4" />
+        </a>
+        <span>vulgo Cotocozinsan</span>
+    </footer>
+
   </div>
 );
 
@@ -755,15 +766,8 @@ export default function App() {
       {page === 'classes' && selectedOrigin && <ClassesPage origin={selectedOrigin} onBack={() => setPage('origins')} onSelectClass={handleSelectClass} />}
       {page === 'create_character' && selectedOrigin && selectedClass && <CharacterCreationPage origin={selectedOrigin} characterClass={selectedClass} onBack={() => setPage('classes')} onFinish={handleFinishCreation} isSaving={isSaving} showMessage={showMessage} />}
       {page === 'participants' && <ParticipantsPage participants={participants} onDelete={handleDeleteParticipant} onBack={() => setPage('home')} showMessage={showMessage} />}
-
-      {/* MODAIS GLOBAIS */}
-      <MessageModal 
-        isOpen={messageModal.isOpen} 
-        onClose={() => setMessageModal({ ...messageModal, isOpen: false })} 
-        title={messageModal.title} 
-        message={messageModal.message} 
-        type={messageModal.type} 
-      />
+      
+      <MessageModal isOpen={messageModal.isOpen} onClose={() => setMessageModal({ ...messageModal, isOpen: false })} title={messageModal.title} message={messageModal.message} type={messageModal.type} />
       <ServerInfoModal isOpen={showServerModal} onClose={() => setShowServerModal(false)} />
     </>
   );
